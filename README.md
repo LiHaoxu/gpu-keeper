@@ -17,7 +17,7 @@
 | 占位进程依赖 | 带 torch 的镜像 | 任何带 python3 的镜像，或者不用 docker |
 | 选卡、设环境变量 | 读 `held` 文件自己写 | `keeper2.py run -- 命令` |
 
-v1 的三个脚本原样保留，仍然可用。不要让 v1 和 keeper2 的占位进程待在同一张卡上：v1 的占位进程是你的 uid，keeper2 会把它当成你的作业而一直让路。
+v1 的三个脚本在 [`main` 分支](https://github.com/LiHaoxu/gpu-keeper/tree/main)，仍然可用。不要让 v1 和 keeper2 的占位进程待在同一张卡上：v1 的占位进程是你的 uid，keeper2 会把它当成你的作业而一直让路。
 
 ## 原理
 
@@ -47,7 +47,7 @@ keeper（后台守护进程）负责：等空闲卡出现并占上、占位进�
 ## 快速开始
 
 ```bash
-git clone https://github.com/LiHaoxu/gpu-keeper && cd gpu-keeper/keeper2
+git clone -b keeper2 https://github.com/LiHaoxu/gpu-keeper && cd gpu-keeper
 
 ./keeper2.py up -n 2          # 占 2 张卡。没有空闲卡就一直等；一张卡空闲满 30 s 才会被占
 ./keeper2.py status           # 占了哪些卡、谁在卡上、挡掉了几次
